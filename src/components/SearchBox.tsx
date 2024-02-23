@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 import { Input } from "./ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import useResize from "@/hooks/Resize";
 
 const SearchBox = () => {
+  const ref = useRef<HTMLDivElement>(null);
   const [searchText, setSearchText] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  const { width } = useResize(ref);
 
+  // fetch products
   const fetchProducts = async (value: string) => {
     try {
       if (value !== "") {
@@ -28,9 +32,13 @@ const SearchBox = () => {
     fetchProducts(e.currentTarget.value);
     console.log(searchText);
   };
+
   return (
     <>
-      <div className="flex mx-4 lg:ml-6 items-center border rounded-md px-2 lg:px-4 relative w-full">
+      <div
+        className="flex mx-4 lg:ml-6 items-center border rounded-md px-2 lg:px-4 relative w-full bg-white"
+        ref={ref}
+      >
         <Input
           type="search"
           className="p-2 pl-0 font-inter w-full border-none focus:!ring-0 focus:!ring-offset-0 italic"
@@ -42,7 +50,7 @@ const SearchBox = () => {
         <img className="mx-2" src="/assets/search-icon.png" alt="" />
       </div>
       {searchResult.length > 0 && (
-        <div className="absolute top-14 left-[55px] 2xl:left-[280px] lg:left-[225px] bg-white border-2 max-h-[500px] rounded-md w-1/2 ">
+        <div className="search-results absolute top-14 left-[55px] 2xl:left-[280px] lg:left-[225px] bg-white border-2 max-h-[500px] rounded-md  z-[9999]">
           <ul>
             <ScrollArea className="w-full h-64">
               {searchResult.map((product: any) => (
@@ -52,6 +60,13 @@ const SearchBox = () => {
               ))}
             </ScrollArea>
           </ul>
+          <style>
+            {`
+          .search-results{
+            width: ${width}px;
+          }
+          `}
+          </style>
         </div>
       )}
     </>
