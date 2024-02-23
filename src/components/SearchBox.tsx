@@ -30,7 +30,7 @@ const SearchBox = () => {
   };
   return (
     <>
-      <div className="flex ml-6 items-center border rounded-md px-4 relative w-full">
+      <div className="flex mx-4 lg:ml-6 items-center border rounded-md px-2 lg:px-4 relative w-full">
         <Input
           type="search"
           className="p-2 pl-0 font-inter w-full border-none focus:!ring-0 focus:!ring-offset-0 italic"
@@ -42,7 +42,7 @@ const SearchBox = () => {
         <img className="mx-2" src="/assets/search-icon.png" alt="" />
       </div>
       {searchResult.length > 0 && (
-        <div className="absolute top-14 2xl:left-[280px] left-[225px] bg-white border-2 max-h-[500px] rounded-md w-1/2 ">
+        <div className="absolute top-14 left-[55px] 2xl:left-[280px] lg:left-[225px] bg-white border-2 max-h-[500px] rounded-md w-1/2 ">
           <ul>
             <ScrollArea className="w-full h-64">
               {searchResult.map((product: any) => (

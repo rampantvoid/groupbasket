@@ -23,11 +23,11 @@ const Navbar = () => {
     <div className="w-full p-3 shadow-md flex justify-center items-center bg-white  z-[999]">
       {/* Dekstop menue */}
 
-      <div className="hidden w-full 2xl:mx-14 items-center justify-between lg:flex ">
+      <div className=" w-full 2xl:mx-14 items-center justify-between flex ">
         <div className="flex flex-1">
           <img src="/assets/logo.svg" alt="" />
 
-          <p className="ml-3 text-2xl font-bold font-inter text-[#565B6E] flex items-center">
+          <p className="ml-3 text-2xl font-bold font-inter text-[#565B6E] lg:flex items-center hidden">
             groupbasket
           </p>
 
@@ -36,7 +36,7 @@ const Navbar = () => {
 
         <div className="flex gap-4 items-center ">
           <Select>
-            <SelectTrigger className="w-24 focus:!ring-0 focus:!ring-offset-0 border-none">
+            <SelectTrigger className="w-24 focus:!ring-0 focus:!ring-offset-0 border-none hidden lg:flex">
               <SelectValue placeholder="English" />
             </SelectTrigger>
             <SelectContent>
@@ -44,7 +44,9 @@ const Navbar = () => {
               <SelectItem value="hindi">Hindi</SelectItem>
             </SelectContent>
           </Select>
-          <p className="text-sm font-bold">Hello, {user.name}</p>
+          <p className="text-sm font-bold hidden lg:block">
+            Hello, {user.name}
+          </p>
 
           <div className="relative hover:cursor-pointer w-11">
             <div className="-top-4 absolute left-4">
@@ -59,14 +61,16 @@ const Navbar = () => {
 
       {/* Mobile menue */}
       <Drawer>
-        <div className="flex w-full items-center justify-between lg:hidden ">
-          <DrawerTrigger>
+        <div className="flex w-full items-center justify-between hidden ">
+          {/* <DrawerTrigger>
             <img src="/assets/search-icon.png" alt="" />
-          </DrawerTrigger>
+          </DrawerTrigger> */}
 
           <div className=" text-2xl font-bold font-inter md:text-4xl">
             <img src="/assets/logo.svg" alt="" />
           </div>
+
+          <SearchBox />
 
           <DrawerContent className="h-svh">
             <div className="p-8 flex w-full flex-col">
