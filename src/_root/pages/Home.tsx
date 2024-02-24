@@ -61,7 +61,7 @@ const Home = () => {
 
             <ScrollArea className="w-full">
               <div className="flex w-max py-8 px-4 gap-8">
-                {[1, 2, 3, 4, 5, 6, 7].map((i, key) => (
+                {[1, 2, 3, 4, 5, 6, 7].map((key) => (
                   <div
                     className="bg-white p-8 rounded-md shadow-md flex flex-col gap-3 items-center w-72 hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
                     key={key}
@@ -115,7 +115,7 @@ const Home = () => {
 
             <ScrollArea className="w-full">
               <div className="flex w-max py-8 px-4 gap-8">
-                {[1, 2, 3, 4, 5, 6, 7].map((i, key) => (
+                {[1, 2, 3, 4, 5, 6, 7].map((key) => (
                   <div
                     className="bg-white p-8 rounded-md shadow-md flex flex-col gap-3 items-center w-72 hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
                     key={key}
