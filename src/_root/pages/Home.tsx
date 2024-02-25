@@ -72,11 +72,11 @@ const Home = () => {
             <p className="font-bold text-xl">Deals closing soon!</p>
 
             <ScrollArea className="w-full">
-              <div className="flex w-max py-8 px-4 gap-8 2xl:gap-12 mx-auto">
+              <div className="flex w-max py-8 px-4 gap-8 mx-auto">
                 {deals.map((deal, key) => (
-                  <Link to={`/product/${key + 1}`}>
+                  <Link to={`/product/${key + 1}`} className="">
                     <div
-                      className="bg-[var(--secondary-background)] p-8 rounded-md shadow-md flex flex-col gap-3 items-center w-72 hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
+                      className="bg-[var(--secondary-background)] p-4 w-64 rounded-md shadow-md flex flex-col gap-3 items-center  hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
                       key={key}
                     >
                       <img
@@ -136,7 +136,7 @@ const Home = () => {
                 {deals.map((deal, key) => (
                   <Link to={`/product/${key + 1}`}>
                     <div
-                      className="bg-[var(--secondary-background)] p-8 rounded-md shadow-md flex flex-col gap-3 items-center w-72 hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
+                      className="bg-[var(--secondary-background)] p-4 w-64 rounded-md shadow-md flex flex-col gap-3 items-center hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
                       key={key}
                     >
                       <img
