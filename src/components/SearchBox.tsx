@@ -50,7 +50,7 @@ const SearchBox = () => {
         <img className="mx-2" src="/assets/search-icon.png" alt="" />
       </div>
       {searchResult.length > 0 && (
-        <div className="search-results absolute top-14 left-[55px] 2xl:left-[280px] lg:left-[225px] bg-white border-2 max-h-[500px] rounded-md  z-[9999]">
+        <div className="search-results absolute top-14 left-[50px] 2xl:left-[255px] lg:left-[195px] bg-white border-2 max-h-[500px] rounded-md  z-[9999]">
           <ul>
             <ScrollArea className="w-full h-64">
               {searchResult.map((product: any) => (
