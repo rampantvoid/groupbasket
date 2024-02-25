@@ -44,7 +44,10 @@ const SponsoredDeals = ({ setApi }: { setApi: any }) => {
     >
       <CarouselContent className="w-full h-[550px] mt-0 ml-0">
         {dealItems.map((item) => (
-          <Link to="/product/7">
+          <Link
+            to="/product/7"
+            className="min-w-0 shrink-0 grow-0 basis-full h-full m-0 p-0"
+          >
             <CarouselItem className="h-full m-0 p-0">
               <div className="w-full flex justify-center md:justify-between h-full md:p-10">
                 <div className="w-full md:w-auto flex flex-col items-center md:items-start md:justify-between">
@@ -52,7 +55,11 @@ const SponsoredDeals = ({ setApi }: { setApi: any }) => {
                     sponsored deal
                   </p>
                   <div className="flex justify-center md:hidden">
-                    <img src={item.image} alt="" className="w-1/2" />
+                    <img
+                      src={item.image}
+                      alt=""
+                      className="w-1/2 object-contain"
+                    />
                   </div>
                   <div className="p-8 w-full">
                     <p className="text-xl md:text-4xl font-md">{item.title}</p>

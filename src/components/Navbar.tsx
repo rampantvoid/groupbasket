@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SearchBox from "./SearchBox";
 import {
   Select,
@@ -16,11 +17,13 @@ const Navbar = () => {
 
       <div className=" w-full 2xl:mx-14 items-center justify-between flex ">
         <div className="flex flex-1">
-          <img src="/assets/logo.svg" alt="" />
+          <Link to="/" className="flex justify-center">
+            <img src="/assets/logo.svg" alt="" />
 
-          <p className="ml-3 text-2xl font-bold font-inter text-[#565B6E] lg:flex items-center hidden">
-            groupbasket
-          </p>
+            <p className="ml-3 text-2xl font-bold font-inter text-[#565B6E] lg:flex items-center hidden">
+              groupbasket
+            </p>
+          </Link>
 
           <SearchBox />
         </div>

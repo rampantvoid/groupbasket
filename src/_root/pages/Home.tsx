@@ -27,7 +27,6 @@ const deals = [
   { image: "/assets/image 13.png" },
   { image: "/assets/image 14.png" },
   { image: "/assets/image 11.png" },
-  { image: "/assets/ps-image.png" },
 ];
 
 const Home = () => {
@@ -55,7 +54,7 @@ const Home = () => {
   return (
     <>
       <div className="border-b-2 border-[#D9D9D9] bg-[#F7F7F7] flex justify-center">
-        <div className="w-full p-2 2xl:mx-32 md:max-h-[50vh] flex">
+        <div className="w-full p-2 2xl:mx-32  flex">
           <SlideIndicator
             slides={scrollSnaps}
             scroll={scroll}
@@ -73,7 +72,7 @@ const Home = () => {
             <p className="font-bold text-xl">Deals closing soon!</p>
 
             <ScrollArea className="w-full">
-              <div className="flex w-max py-8 px-4 gap-8">
+              <div className="flex w-max py-8 px-4 gap-8 2xl:gap-12 mx-auto">
                 {deals.map((deal, key) => (
                   <Link to={`/product/${key + 1}`}>
                     <div
@@ -114,7 +113,7 @@ const Home = () => {
             <p className="font-bold text-xl">Deals by categories</p>
 
             <ScrollArea className="w-full">
-              <div className="flex w-max p-8 gap-24 ">
+              <div className="flex w-max p-8 gap-24 mx-auto">
                 {categories.map((i, key) => (
                   <img
                     src={i.image}
@@ -133,7 +132,7 @@ const Home = () => {
             <p className="font-bold text-xl">Upcoming Deals</p>
 
             <ScrollArea className="w-full">
-              <div className="flex w-max py-8 px-4 gap-8">
+              <div className="flex w-max py-8 px-4 gap-8 2xl:gap-12 mx-auto">
                 {deals.map((deal, key) => (
                   <Link to={`/product/${key + 1}`}>
                     <div
