@@ -66,11 +66,10 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-[var(--main-background)] w-full flex justify-center text-[var(--primary-text)]">
-        <div className="w-full p-8 2xl:mx-28 flex flex-col gap-8 md:gap-14">
+        <div className="w-full p-8 2xl:mx-64 flex flex-col gap-8 md:gap-14">
           {/* deals */}
           <div className="w-full flex flex-col">
-            <p className="font-bold text-xl">Deals closing soon!</p>
-
+            <p className="font-bold text-xl ">Deals closing soon!</p>
             <ScrollArea className="w-full">
               <div className="flex w-max py-8 px-4 gap-8 mx-auto">
                 {deals.map((deal, key) => (
@@ -112,8 +111,8 @@ const Home = () => {
           <div className="w-full flex flex-col">
             <p className="font-bold text-xl">Deals by categories</p>
 
-            <ScrollArea className="w-full">
-              <div className="flex w-max p-8 gap-24 mx-auto">
+            <ScrollArea className="w-full ">
+              <div className="flex w-max p-8 gap-14 mx-auto">
                 {categories.map((i, key) => (
                   <img
                     src={i.image}
@@ -132,7 +131,7 @@ const Home = () => {
             <p className="font-bold text-xl">Upcoming Deals</p>
 
             <ScrollArea className="w-full">
-              <div className="flex w-max py-8 px-4 gap-8 2xl:gap-12 mx-auto">
+              <div className="flex w-max py-8 px-4 gap-8 mx-auto">
                 {deals.map((deal, key) => (
                   <Link to={`/product/${key + 1}`}>
                     <div
