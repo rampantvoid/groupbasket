@@ -4,6 +4,7 @@ import { CarouselApi } from "@/components/ui/carousel";
 import React, { useEffect, useState } from "react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Progress } from "@/components/ui/progress";
+import { Link } from "react-router-dom";
 
 const categories = [
   { name: "mobile", image: "/assets/categories/mobile.png" },
@@ -17,6 +18,16 @@ const categories = [
   { name: "jewlrey", image: "/assets/categories/jewlrey.png" },
   { name: "watches", image: "/assets/categories/watches.png" },
   { name: "camera", image: "/assets/categories/camera.png" },
+];
+
+const deals = [
+  { image: "assets/laptop.png" },
+  { image: "/assets/image 9.png" },
+  { image: "/assets/image 10.png" },
+  { image: "/assets/image 13.png" },
+  { image: "/assets/image 14.png" },
+  { image: "/assets/image 11.png" },
+  { image: "/assets/ps-image.png" },
 ];
 
 const Home = () => {
@@ -50,7 +61,9 @@ const Home = () => {
             scroll={scroll}
             activeIndex={activeIndex}
           />
-          <SponsoredDeals setApi={setApi} />
+          <div className="w-full flex items-center justify-center">
+            <SponsoredDeals setApi={setApi} />
+          </div>
         </div>
       </div>
       <div className="bg-[#F7F7F7] w-full flex justify-center">
@@ -61,29 +74,35 @@ const Home = () => {
 
             <ScrollArea className="w-full">
               <div className="flex w-max py-8 px-4 gap-8">
-                {[1, 2, 3, 4, 5, 6, 7].map((key) => (
-                  <div
-                    className="bg-white p-8 rounded-md shadow-md flex flex-col gap-3 items-center w-72 hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
-                    key={key}
-                  >
-                    <img src="/assets/laptop.png" alt="" />
+                {deals.map((deal, key) => (
+                  <Link to={`/product/${key + 1}`}>
+                    <div
+                      className="bg-white p-8 rounded-md shadow-md flex flex-col gap-3 items-center w-72 hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
+                      key={key}
+                    >
+                      <img
+                        src={deal.image}
+                        alt=""
+                        className="h-[200px] w-[100px] object-contain"
+                      />
 
-                    <p className="text-sm line-clamp-2 mt-4">
-                      MSI Gaming GF63 Thin, Intel 11th Gen. i5-11400H, 40CM
-                      FHD...
-                    </p>
+                      <p className="text-sm line-clamp-2 mt-4">
+                        MSI Gaming GF63 Thin, Intel 11th Gen. i5-11400H, 40CM
+                        FHD...
+                      </p>
 
-                    <p className="w-full font-bold flex justify-between items-center">
-                      &#8377; 54,990.00{" "}
-                      <span className="text-sm font-light">
-                        MRP &#8377; 76,990.00
-                      </span>
-                    </p>
-                    <div className="w-full">
-                      <Progress value={78} className="h-3" />
-                      <p className="w-full text-sm">78% Claimed</p>
+                      <p className="w-full font-bold flex justify-between items-center">
+                        &#8377; 54,990.00{" "}
+                        <span className="text-sm font-light">
+                          MRP &#8377; 76,990.00
+                        </span>
+                      </p>
+                      <div className="w-full">
+                        <Progress value={78} className="h-3" />
+                        <p className="w-full text-sm">78% Claimed</p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
               <ScrollBar orientation="horizontal" className="" />
@@ -115,29 +134,35 @@ const Home = () => {
 
             <ScrollArea className="w-full">
               <div className="flex w-max py-8 px-4 gap-8">
-                {[1, 2, 3, 4, 5, 6, 7].map((key) => (
-                  <div
-                    className="bg-white p-8 rounded-md shadow-md flex flex-col gap-3 items-center w-72 hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
-                    key={key}
-                  >
-                    <img src="/assets/laptop.png" alt="" />
+                {deals.map((deal, key) => (
+                  <Link to={`/product/${key + 1}`}>
+                    <div
+                      className="bg-white p-8 rounded-md shadow-md flex flex-col gap-3 items-center w-72 hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
+                      key={key}
+                    >
+                      <img
+                        src={deal.image}
+                        alt=""
+                        className="h-[200px] w-[100px] object-contain"
+                      />
 
-                    <p className="text-sm line-clamp-2 mt-4">
-                      MSI Gaming GF63 Thin, Intel 11th Gen. i5-11400H, 40CM
-                      FHD...
-                    </p>
+                      <p className="text-sm line-clamp-2 mt-4">
+                        MSI Gaming GF63 Thin, Intel 11th Gen. i5-11400H, 40CM
+                        FHD...
+                      </p>
 
-                    <p className="w-full font-bold flex justify-between items-center">
-                      &#8377; 54,990.00{" "}
-                      <span className="text-sm font-light">
-                        MRP &#8377; 76,990.00
-                      </span>
-                    </p>
-                    <div className="w-full">
-                      <Progress value={78} className="h-3" />
-                      <p className="w-full text-sm">78% Claimed</p>
+                      <p className="w-full font-bold flex justify-between items-center">
+                        &#8377; 54,990.00{" "}
+                        <span className="text-sm font-light">
+                          MRP &#8377; 76,990.00
+                        </span>
+                      </p>
+                      <div className="w-full">
+                        <Progress value={78} className="h-3" />
+                        <p className="w-full text-sm">78% Claimed</p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
               <ScrollBar orientation="horizontal" className="" />

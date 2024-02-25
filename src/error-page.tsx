@@ -5,12 +5,14 @@ export default function ErrorPage() {
   console.error(error);
 
   return (
-    <div id="error-page">
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
-      <p>
-        <i>{error.statusText || error.message}</i>
-      </p>
+    <div
+      id="error-page"
+      className="w-full h-dvh flex justify-center items-center"
+    >
+      <div className="flex flex-col items-center gap-2">
+        <img src="/assets/construction.png" alt="" />
+        <p>Comming Soon...</p>
+      </div>
     </div>
   );
 }
