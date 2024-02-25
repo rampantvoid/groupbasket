@@ -51,7 +51,7 @@ const SponsoredDeals = ({ setApi }: { setApi: any }) => {
             <CarouselItem className="h-full m-0 p-0">
               <div className="w-full flex justify-center md:justify-between h-full md:p-10">
                 <div className="w-full md:w-auto flex flex-col items-center md:items-start md:justify-between">
-                  <p className="p-8 pt-0 capitalize text-[#ECECEC] scroll-m-20 text-5xl md:text-6xl font-extrabold tracking-tight 2xl:text-8xl">
+                  <p className="p-8 pt-0 capitalize text-[var(--text-muted)] scroll-m-20 text-5xl md:text-6xl font-extrabold tracking-tight 2xl:text-8xl">
                     sponsored deal
                   </p>
                   <div className="flex justify-center md:hidden">
@@ -63,10 +63,10 @@ const SponsoredDeals = ({ setApi }: { setApi: any }) => {
                   </div>
                   <div className="p-8 w-full">
                     <p className="text-xl md:text-4xl font-md">{item.title}</p>
-                    <p className="text-2xl md:text-5xl font-extrabold text-[#333333]">
+                    <p className="text-2xl md:text-5xl font-extrabold text-[var(--secondary-text)]">
                       {item.subtitle}
                     </p>
-                    <div className="p-4 mt-4 bg-white w-56 rounded-lg shadow-md flex justify-between items-center">
+                    <div className="p-4 mt-4 bg-[var(--btn-background)] text-[var(--btn-text)] w-56 rounded-lg shadow-md flex justify-between items-center">
                       <p className="font-extrabold">&#8377; 24,990.00</p>
                       <p className="text-sm font-light">&#8377; 31,990.00</p>
                     </div>

@@ -5,6 +5,7 @@ import SlideIndicator from "@/components/SlideIndicator";
 import { Button } from "@/components/ui/button";
 import { CarouselApi } from "@/components/ui/carousel";
 import { Progress } from "@/components/ui/progress";
+import { ThemeProvider } from "@/contexts/theme";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
@@ -16,6 +17,15 @@ const Product = () => {
   const [activeIndex, setCurrent] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
   const [api, setApi] = useState<CarouselApi>();
+  const [themeMode, setThemeMode] = useState("light");
+
+  const darkTheme = () => {
+    setThemeMode("dark");
+  };
+
+  const lightTheme = () => {
+    setThemeMode("light");
+  };
 
   const getProduct = async (productId: any) => {
     try {
@@ -36,9 +46,11 @@ const Product = () => {
   const scroll = (index: number) => {
     api?.scrollTo(index);
   };
-
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    document.querySelector("html")?.classList.remove("dark", "light");
+    document.querySelector("html")?.classList.add(themeMode);
     if (product === null) {
       getProduct(productId);
     }
@@ -51,15 +63,15 @@ const Product = () => {
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap());
     });
-  }, [api]);
+  }, [api, themeMode]);
 
   return (
-    <>
+    <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
       {loading ? (
         <Loading />
       ) : (
         <>
-          <div className="w-full bg-[#F7F7F7] flex justify-center">
+          <div className="w-full bg-[var(--main-background)] flex justify-center text-[var(--primary-text)]">
             <div className="flex 2xl:mx-28 w-full justify-evenly px-8 py-10 lg:flex-row flex-col">
               <SlideIndicator
                 slides={scrollSnaps}
@@ -71,7 +83,7 @@ const Product = () => {
               <div className="flex flex-col gap-4 justify-center">
                 <div>
                   <p className="text-xl md:text-4xl font-md">{product.title}</p>
-                  <p className="text-2xl md:text-5xl font-extrabold text-[#333333]">
+                  <p className="text-2xl md:text-5xl font-extrabold text-[var(--secondary-text)]">
                     {product.subtitle}
                   </p>
                 </div>
@@ -83,10 +95,16 @@ const Product = () => {
                   activeIndex={activeIndex}
                 />
 
-                {/* color selector */}
+                {/* theme selector */}
                 <div className="flex gap-3 p-2">
-                  <div className="w-6 h-6 bg-black rounded-lg border-black border hover:cursor-pointer hover:ring-2 ring-offset-2 transition-all ease-in-out"></div>
-                  <div className="w-6 h-6 bg-white rounded-lg border-black border hover:cursor-pointer hover:ring-2 ring-offset-2 transition-all ease-in-out"></div>
+                  <div
+                    className="w-6 h-6 border-[var(--primary-text)] bg-black rounded-lg border-black border-2 hover:cursor-pointer hover:ring-2 ring-offset-2 transition-all ease-in-out"
+                    onClick={darkTheme}
+                  ></div>
+                  <div
+                    className="w-6 h-6 border-[var(--primary-text)] bg-white rounded-lg border-black border-2 hover:cursor-pointer hover:ring-2 ring-offset-2 transition-all ease-in-out"
+                    onClick={lightTheme}
+                  ></div>
                 </div>
               </div>
 
@@ -126,12 +144,9 @@ const Product = () => {
                 </div>
 
                 {/* Price */}
-                <div className="bg-black rounded-lg px-4 py-4 flex gap-2 xl:w-1/3 justify-between">
-                  <p className="text-white font-bold">&#8377; 24,000.00</p>
-                  <p className="text-white font-light line-through">
-                    {" "}
-                    &#8377; 31,500
-                  </p>
+                <div className="bg-[var(--btn-background)] rounded-lg px-4 py-4 flex gap-2 xl:w-1/3 justify-between text-[var(--btn-text)]">
+                  <p className=" font-bold">&#8377; 24,000.00</p>
+                  <p className=" font-light line-through"> &#8377; 31,500</p>
                 </div>
 
                 {/* Completed orders */}
@@ -180,7 +195,7 @@ const Product = () => {
               </div>
             </div>
           </div>
-          <div className="w-full bg-[#F7F7F7] flex justify-center ">
+          <div className="w-full bg-[var(--main-background)] flex justify-center">
             <div className="flex 2xl:mx-28 w-full items-center justify-center px-8 py-10 lg:flex-row flex-col gap-5">
               <img
                 src="/assets/register-btn.png"
@@ -196,7 +211,7 @@ const Product = () => {
           </div>
         </>
       )}
-    </>
+    </ThemeProvider>
   );
 };
 

@@ -17,14 +17,14 @@ const categoryList = [
 
 const Categories = () => {
   return (
-    <div className="w-full bg-white flex justify-center">
+    <div className="w-full bg-[var(--nav-color)] text-[var(--nav-text)] flex justify-center">
       <div className="w-full p-3 2xl:mx-32 flex">
         {/* desktop */}
         <ul className="lg:flex hidden lg:flex-row w-full justify-evenly">
           {categoryList.map((item) => (
             <Link
               to={item.linkTo}
-              className={`hover:bg-[#ECECEC] transition-all ease-in-out py-3 xl:w-full text-center ${
+              className={`hover:bg-[var(--text-muted)] hover:text-[var(--btn-text)] transition-all ease-in-out py-3 xl:w-full text-center ${
                 window.location.pathname === item.linkTo ? "font-bold" : ""
               }`}
             >
@@ -39,7 +39,7 @@ const Categories = () => {
             {categoryList.map((item) => (
               <Link
                 to={item.linkTo}
-                className={`hover:bg-[#ECECEC] transition-all ease-in-out py-3 xl:w-full text-center ${
+                className={`hover:bg-[var(--text-muted)] hover:text-[var(--btn-text)] transition-all ease-in-out py-3 xl:w-full text-center ${
                   window.location.pathname === item.linkTo ? "font-bold" : ""
                 }`}
               >

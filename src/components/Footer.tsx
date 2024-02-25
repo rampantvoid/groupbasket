@@ -52,7 +52,7 @@ const Footer = () => {
     window.scrollTo(0, 0);
   };
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full text-black">
       <div className="w-full bg-[#C4C4C4] flex justify-center">
         <div className="xl:mx-32 w-full flex flex-col p-8 gap-16">
           {/* back to top */}

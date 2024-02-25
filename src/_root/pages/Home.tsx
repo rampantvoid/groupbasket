@@ -53,8 +53,8 @@ const Home = () => {
 
   return (
     <>
-      <div className="border-b-2 border-[#D9D9D9] bg-[#F7F7F7] flex justify-center">
-        <div className="w-full p-2 2xl:mx-32  flex">
+      <div className="border-b-2 border-[var(--border-btm)] bg-[var(--main-background)] flex justify-center text-[var(--primary-text)]">
+        <div className="w-full p-2 2xl:mx-32 flex">
           <SlideIndicator
             slides={scrollSnaps}
             scroll={scroll}
@@ -65,7 +65,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#F7F7F7] w-full flex justify-center">
+      <div className="bg-[var(--main-background)] w-full flex justify-center text-[var(--primary-text)]">
         <div className="w-full p-8 2xl:mx-28 flex flex-col gap-8 md:gap-14">
           {/* deals */}
           <div className="w-full flex flex-col">
@@ -76,13 +76,13 @@ const Home = () => {
                 {deals.map((deal, key) => (
                   <Link to={`/product/${key + 1}`}>
                     <div
-                      className="bg-white p-8 rounded-md shadow-md flex flex-col gap-3 items-center w-72 hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
+                      className="bg-[var(--secondary-background)] p-8 rounded-md shadow-md flex flex-col gap-3 items-center w-72 hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
                       key={key}
                     >
                       <img
                         src={deal.image}
                         alt=""
-                        className="h-[200px] w-[100px] object-contain"
+                        className="h-[150px] w-[150px] object-contain"
                       />
 
                       <p className="text-sm line-clamp-2 mt-4">
@@ -136,13 +136,13 @@ const Home = () => {
                 {deals.map((deal, key) => (
                   <Link to={`/product/${key + 1}`}>
                     <div
-                      className="bg-white p-8 rounded-md shadow-md flex flex-col gap-3 items-center w-72 hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
+                      className="bg-[var(--secondary-background)] p-8 rounded-md shadow-md flex flex-col gap-3 items-center w-72 hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
                       key={key}
                     >
                       <img
                         src={deal.image}
                         alt=""
-                        className="h-[200px] w-[100px] object-contain"
+                        className="h-[150px] w-[150px] object-contain"
                       />
 
                       <p className="text-sm line-clamp-2 mt-4">

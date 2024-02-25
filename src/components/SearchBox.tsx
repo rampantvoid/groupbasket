@@ -36,12 +36,12 @@ const SearchBox = () => {
   return (
     <>
       <div
-        className="flex mx-4 lg:ml-6 items-center border rounded-md px-2 lg:px-4 relative w-full bg-white"
+        className="flex mx-4 lg:ml-6 items-center border rounded-md px-2 lg:px-4 relative w-full bg-[var(--nav-color)] text-[var(--primary-text)]"
         ref={ref}
       >
         <Input
           type="search"
-          className="p-2 pl-0 font-inter w-full border-none focus:!ring-0 focus:!ring-offset-0 italic"
+          className="p-2 pl-0 font-inter w-full border-none focus:!ring-0 focus:!ring-offset-0 italic bg-[var(--nav-color)]"
           placeholder="Find best deals for you"
           value={searchText}
           onChange={onTyping}
