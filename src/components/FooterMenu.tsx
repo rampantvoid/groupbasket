@@ -12,11 +12,12 @@ const FooterMenu = ({
       <p className="font-bold capitalize">{title}</p>
 
       <ul className="flex flex-col ">
-        {options.map((option) => (
+        {options.map((option, key) => (
           <Link
             to={option.linkTo}
             className="capitalize"
             target={option.target}
+            key={key}
           >
             {option.name}
           </Link>

@@ -43,9 +43,10 @@ const SponsoredDeals = ({ setApi }: { setApi: any }) => {
       opts={{ loop: true }}
     >
       <CarouselContent className="w-full h-[550px] mt-0 ml-0">
-        {dealItems.map((item) => (
+        {dealItems.map((item, key) => (
           <Link
             to="/product/7"
+            key={key}
             className="min-w-0 shrink-0 grow-0 basis-full h-full m-0 p-0"
           >
             <CarouselItem className="h-full m-0 p-0">

@@ -66,8 +66,12 @@ const Footer = () => {
           </div>
           {/* menu */}
           <div className="flex flex-col lg:flex-row w-full gap-8 lg:justify-evenly">
-            {menu.map((menuItem) => (
-              <FooterMenu title={menuItem.name} options={menuItem.options} />
+            {menu.map((menuItem, key) => (
+              <FooterMenu
+                title={menuItem.name}
+                options={menuItem.options}
+                key={key}
+              />
             ))}
           </div>
         </div>

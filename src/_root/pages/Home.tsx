@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Progress } from "@/components/ui/progress";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Loading from "@/components/Loading";
 
 const categories = [
   { name: "mobile", image: "/assets/categories/mobile.png" },
@@ -20,18 +22,11 @@ const categories = [
   { name: "camera", image: "/assets/categories/camera.png" },
 ];
 
-const deals = [
-  { image: "assets/laptop.png" },
-  { image: "/assets/image 9.png" },
-  { image: "/assets/image 10.png" },
-  { image: "/assets/image 13.png" },
-  { image: "/assets/image 14.png" },
-  { image: "/assets/image 11.png" },
-];
-
 const Home = () => {
   const [activeIndex, setCurrent] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState<any>();
 
   const [api, setApi] = React.useState<CarouselApi>();
 
@@ -39,17 +34,41 @@ const Home = () => {
     api?.scrollTo(index);
   };
 
+  const getProducts = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `https://65dafdac3ea883a15290faca.mockapi.io/api/v1/products`
+      );
+
+      const filteredProducts = response.data.filter(
+        (product: any) => product.id < 7
+      );
+      setProducts(filteredProducts);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
+    getProducts();
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
     if (!api) {
       return;
     }
     setCurrent(api.selectedScrollSnap());
     setScrollSnaps(api.scrollSnapList());
-    console.log(api.scrollSnapList());
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap());
     });
   }, [api]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -72,36 +91,33 @@ const Home = () => {
             <p className="font-bold text-xl ">Deals closing soon!</p>
             <ScrollArea className="w-full">
               <div className="flex w-max py-8 px-4 gap-8 mx-auto">
-                {deals.map((deal, key) => (
-                  <Link to={`/product/${key + 1}`} className="">
-                    <div
-                      className="bg-[var(--secondary-background)] p-4 w-64 rounded-md shadow-md flex flex-col gap-3 items-center  hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
-                      key={key}
-                    >
-                      <img
-                        src={deal.image}
-                        alt=""
-                        className="h-[150px] w-[150px] object-contain"
-                      />
+                {products &&
+                  products.map((product: any, key: any) => (
+                    <Link to={`/product/${product.id}`} className="" key={key}>
+                      <div className="bg-[var(--secondary-background)] p-4 w-64 rounded-md shadow-md flex flex-col gap-3 items-center  hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out ">
+                        <img
+                          src={product.preview_img}
+                          alt=""
+                          className="h-[150px] w-[150px] object-contain"
+                        />
 
-                      <p className="text-sm line-clamp-2 mt-4">
-                        MSI Gaming GF63 Thin, Intel 11th Gen. i5-11400H, 40CM
-                        FHD...
-                      </p>
+                        <p className="text-sm line-clamp-2 mt-4">
+                          {product.description}
+                        </p>
 
-                      <p className="w-full font-bold flex justify-between items-center">
-                        &#8377; 54,990.00{" "}
-                        <span className="text-sm font-light">
-                          MRP &#8377; 76,990.00
-                        </span>
-                      </p>
-                      <div className="w-full">
-                        <Progress value={78} className="h-3" />
-                        <p className="w-full text-sm">78% Claimed</p>
+                        <p className="w-full font-bold flex justify-between items-center">
+                          &#8377; {product.cost}.00{" "}
+                          <span className="text-sm font-light">
+                            MRP &#8377; {product.market_cost}.00
+                          </span>
+                        </p>
+                        <div className="w-full">
+                          <Progress value={78} className="h-3" />
+                          <p className="w-full text-sm">78% Claimed</p>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
               </div>
               <ScrollBar orientation="horizontal" className="" />
             </ScrollArea>
@@ -132,36 +148,33 @@ const Home = () => {
 
             <ScrollArea className="w-full">
               <div className="flex w-max py-8 px-4 gap-8 mx-auto">
-                {deals.map((deal, key) => (
-                  <Link to={`/product/${key + 1}`}>
-                    <div
-                      className="bg-[var(--secondary-background)] p-4 w-64 rounded-md shadow-md flex flex-col gap-3 items-center hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out "
-                      key={key}
-                    >
-                      <img
-                        src={deal.image}
-                        alt=""
-                        className="h-[150px] w-[150px] object-contain"
-                      />
+                {products &&
+                  products.map((product: any, key: any) => (
+                    <Link to={`/product/${product.id}`} className="" key={key}>
+                      <div className="bg-[var(--secondary-background)] p-4 w-64 rounded-md shadow-md flex flex-col gap-3 items-center  hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out ">
+                        <img
+                          src={product.preview_img}
+                          alt=""
+                          className="h-[150px] w-[150px] object-contain"
+                        />
 
-                      <p className="text-sm line-clamp-2 mt-4">
-                        MSI Gaming GF63 Thin, Intel 11th Gen. i5-11400H, 40CM
-                        FHD...
-                      </p>
+                        <p className="text-sm line-clamp-2 mt-4">
+                          {product.description}
+                        </p>
 
-                      <p className="w-full font-bold flex justify-between items-center">
-                        &#8377; 54,990.00{" "}
-                        <span className="text-sm font-light">
-                          MRP &#8377; 76,990.00
-                        </span>
-                      </p>
-                      <div className="w-full">
-                        <Progress value={78} className="h-3" />
-                        <p className="w-full text-sm">78% Claimed</p>
+                        <p className="w-full font-bold flex justify-between items-center">
+                          &#8377; {product.cost}.00{" "}
+                          <span className="text-sm font-light">
+                            MRP &#8377; {product.market_cost}.00
+                          </span>
+                        </p>
+                        <div className="w-full">
+                          <Progress value={78} className="h-3" />
+                          <p className="w-full text-sm">78% Claimed</p>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
               </div>
               <ScrollBar orientation="horizontal" className="" />
             </ScrollArea>
