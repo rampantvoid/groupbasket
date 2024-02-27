@@ -47,8 +47,8 @@ const CategoryPage = () => {
 
   return (
     <div className="bg-[var(--main-background)] flex justify-center">
-      <div className="xl:mx-56 w-full py-8 flex justify-center p-4">
-        <div className="flex flex-wrap gap-4 p-8 justify-center lg:justify-normal">
+      <div className="xl:mx-auto w-full py-8 flex justify-center p-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 gap-4">
           {products &&
             products.map((product: any, key: any) => (
               <ProductCard
