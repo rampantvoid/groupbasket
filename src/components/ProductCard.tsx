@@ -11,7 +11,7 @@ const ProductCard = ({
   description: string;
 }) => {
   return (
-    <Link to={`/product/${productId}`}>
+    <Link to={`/products/${productId}`}>
       <div className="bg-[var(--secondary-background)] p-4 h-[350px] justify-center w-64 rounded-md shadow-md flex flex-col gap-3 items-center hover:cursor-pointer hover:scale-[1.03] transition-all ease-in-out ">
         <img
           src={thumbnail}
