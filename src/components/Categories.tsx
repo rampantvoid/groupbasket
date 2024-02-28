@@ -39,7 +39,7 @@ const Categories = () => {
           <div className="flex w-max gap-8">
             {categoryList.map((item, key) => (
               <Link
-                to={item.linkTo}
+                to={`/category/${item.linkTo}`}
                 key={key}
                 className={`hover:bg-[var(--text-muted)] hover:text-[var(--btn-text)] transition-all ease-in-out py-3 xl:w-full text-center ${
                   window.location.pathname === item.linkTo ? "font-bold" : ""
